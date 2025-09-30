@@ -53,6 +53,7 @@ const Calendar = () => {
     return new Date(year, month, 1).getDay();
   };
 
+//seta proximo mes
   const nextMonth = () => {
     setMonth(prev => {
       if (prev === 11) {
@@ -63,6 +64,7 @@ const Calendar = () => {
     });
   };
 
+  //seta voltar um mes 
   const prevMonth = () => {
     setMonth(prev => {
       if (prev === 0) {
@@ -73,6 +75,7 @@ const Calendar = () => {
     });
   };
 
+  //clique do dia 
   const gotoToday = () => {
     const current = new Date();
     setToday(current);
@@ -81,6 +84,7 @@ const Calendar = () => {
     setActiveDay(current.getDate());
   };
 
+//adicionar evento no calendario 
   const addEvent = () => {
     if (!eventName || !eventFrom || !eventTo) return;
 
@@ -100,6 +104,7 @@ const Calendar = () => {
     setShowAddEvent(false);
   };
 
+  //deletar evento no calendario
   const deleteEvent = (eventToDelete) => {
     setEventsArr(prev =>
       prev.filter(ev =>
@@ -165,6 +170,7 @@ const Calendar = () => {
     return daysArray;
   };
 
+  
   return (
     <Container>
       <Left>

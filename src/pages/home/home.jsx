@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/header/index.jsx";
 import {
@@ -20,74 +20,71 @@ import {
 import { FaPlus, FaFilter, FaBalanceScale } from "react-icons/fa";
 
 const Home = () => {
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/v1/journey/group");
+        if (!response.ok) throw new Error("Erro ao buscar grupos");
+        const data = await response.json();
+        setGroups(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error(error);
+        setGroups([]);
+      }
+    };
+
+    fetchGroups();
+  }, []);
+
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-
       <Container>
         <Header>
           <Title>Bem-vindo ao Journey!</Title>
         </Header>
 
         <GroupsWrapper>
-  <GroupsTitle>
-      Meus Grupos
-  </GroupsTitle>
+          <GroupsTitle>Meus Grupos</GroupsTitle>
 
-  {/* Actions fora dos cards, no topo direito */}
-  <Actions>
-    <ActionButton>
-      <Link to= "/criarGrupo">
-      <FaPlus /> Criar Grupo
-      </Link>
-    </ActionButton>
-    <ActionButton>
-      <FaFilter /> Filtros
-    </ActionButton>
-  </Actions>
+          <Actions>
+            <ActionButton>
+              <Link to="/criarGrupo">
+                <FaPlus /> Criar Grupo
+              </Link>
+            </ActionButton>
+            <ActionButton>
+              <FaFilter /> Filtros
+            </ActionButton>
+          </Actions>
 
-  <GroupGrid>
-    <GroupCard>
-      <GroupIcon>
-        <FaBalanceScale />
-      </GroupIcon>
-      <GroupInfo>
-        <GroupName>Direito</GroupName>
-        <GroupMembers>12 membros</GroupMembers>
-      </GroupInfo>
-    </GroupCard>
-
-    <GroupCard>
-      <GroupIcon>
-        <FaBalanceScale />
-      </GroupIcon>
-      <GroupInfo>
-        <GroupName>Direito</GroupName>
-        <GroupMembers>30 membros (limite atingido)</GroupMembers>
-      </GroupInfo>
-    </GroupCard>
-
-    <GroupCard>
-      <GroupIcon>
-        <FaBalanceScale />
-      </GroupIcon>
-      <GroupInfo>
-        <GroupName>Direito</GroupName>
-        <GroupMembers>12 membros</GroupMembers>
-      </GroupInfo>
-    </GroupCard>
-
-    <GroupCard>
-      <GroupIcon>
-        <FaBalanceScale />
-      </GroupIcon>
-      <GroupInfo>
-        <GroupName>Direito</GroupName>
-        <GroupMembers>12 membros</GroupMembers>
-      </GroupInfo>
-    </GroupCard>
-  </GroupGrid>
-</GroupsWrapper>
+          <GroupGrid>
+            {groups.length > 0 ? (
+              groups.map((group) => (
+                <GroupCard key={group.id}>
+                  <GroupIcon>
+                    <FaBalanceScale />
+                  </GroupIcon>
+                  <GroupInfo>
+                    <GroupName>{group.nome || "Sem nome"}</GroupName>
+                    <GroupMembers>
+                      {Array.isArray(group.membros) ? group.membros.length : 0} membros
+                      {group.limite &&
+                      Array.isArray(group.membros) &&
+                      group.membros.length >= group.limite
+                        ? " (limite atingido)"
+                        : ""}
+                    </GroupMembers>
+                  </GroupInfo>
+                </GroupCard>
+              ))
+            ) : (
+              <p>Nenhum grupo encontrado</p>
+            )}
+          </GroupGrid>
+        </GroupsWrapper>
       </Container>
     </div>
   );
