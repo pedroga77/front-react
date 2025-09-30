@@ -28,7 +28,7 @@ const Sidebar = () => {
         </MenuItem>
         <MenuItem>
           <FaUsers />
-          <p> <a href="/Calendar">Meus Grupos</a></p>
+          <p> <a href="/calendary">Meus Grupos</a></p>
         </MenuItem>
         <MenuItem>
           <FaComments />

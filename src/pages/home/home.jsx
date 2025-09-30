@@ -31,15 +31,15 @@ const Home = () => {
 
         <GroupsWrapper>
   <GroupsTitle>
-    <Link to="/calendary" style={{ textDecoration: "none", color: "white" }}>
       Meus Grupos
-    </Link>
   </GroupsTitle>
 
   {/* Actions fora dos cards, no topo direito */}
   <Actions>
     <ActionButton>
+      <Link to= "/criarGrupo">
       <FaPlus /> Criar Grupo
+      </Link>
     </ActionButton>
     <ActionButton>
       <FaFilter /> Filtros
