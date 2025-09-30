@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Krona One', sans-serif;
-    background: url("../../src/assets/fundu2.png") no-repeat center center fixed;
+    background-color: #F0F2FF;
     background-size: cover;
     font-family: 'Krona One', sans-serif;;
   }

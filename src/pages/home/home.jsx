@@ -1,74 +1,91 @@
-import Header from "../../components/header/index.jsx";
+import React from "react";
+import Sidebar from "../../components/header/index.jsx";
 import {
-  Sidebar,
   Container,
-  Content,
-  Welcome,
-  Box,
-  GroupList,
+  Header,
+  Title,
+  GroupsWrapper,
+  GroupsTitle,
+  GroupGrid,
   GroupCard,
+  GroupIcon,
+  GroupInfo,
+  GroupName,
+  GroupMembers,
+  Actions,
+  ActionButton,
 } from "./home.js";
 
-function Home() {
+import { FaPlus, FaFilter, FaBalanceScale } from "react-icons/fa";
+
+const Home = () => {
   return (
-    <Container>
-      <Header />
-      <div style={{ display: "flex", flex: 1 }}>
-        <Sidebar /> {/* Sidebar já existe */}
+    <div style={{ display: "flex" }}>
+      <Sidebar />
 
-        <Content>
-          <Welcome>Bem-vindo ao Journey!</Welcome>
+      <Container>
+        <Header>
+          <Title>Bem-vindo ao Journey!</Title>
+        </Header>
 
-          {/* Título Direito fora da box */}
-          <h2>Direito</h2>
+       <GroupsWrapper>
+  <GroupsTitle>Grupos</GroupsTitle>
 
-          <Box>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h2>Grupos</h2>
-              <div>
-                <button style={{ marginRight: "10px" }}>+ Criar Grupo</button>
-                <button>▼ Filtros</button>
-              </div>
-            </div>
+  {/* Actions fora dos cards, no topo direito */}
+  <Actions>
+    <ActionButton>
+      <FaPlus /> Criar Grupo
+    </ActionButton>
+    <ActionButton>
+      <FaFilter /> Filtros
+    </ActionButton>
+  </Actions>
 
-            <GroupList>
-              <GroupCard>
-                <span>⚖️</span>
-                <div>
-                  <strong>Direito</strong>
-                  <p>12 membros</p>
-                </div>
-              </GroupCard>
+  <GroupGrid>
+    <GroupCard>
+      <GroupIcon>
+        <FaBalanceScale />
+      </GroupIcon>
+      <GroupInfo>
+        <GroupName>Direito</GroupName>
+        <GroupMembers>12 membros</GroupMembers>
+      </GroupInfo>
+    </GroupCard>
 
-              <GroupCard>
-                <span>⚖️</span>
-                <div>
-                  <strong>Direito</strong>
-                  <p>30 membros (limite atingido)</p>
-                </div>
-              </GroupCard>
+    <GroupCard>
+      <GroupIcon>
+        <FaBalanceScale />
+      </GroupIcon>
+      <GroupInfo>
+        <GroupName>Direito</GroupName>
+        <GroupMembers>30 membros (limite atingido)</GroupMembers>
+      </GroupInfo>
+    </GroupCard>
 
-              <GroupCard>
-                <span>⚖️</span>
-                <div>
-                  <strong>Direito</strong>
-                  <p>12 membros</p>
-                </div>
-              </GroupCard>
+    <GroupCard>
+      <GroupIcon>
+        <FaBalanceScale />
+      </GroupIcon>
+      <GroupInfo>
+        <GroupName>Direito</GroupName>
+        <GroupMembers>12 membros</GroupMembers>
+      </GroupInfo>
+    </GroupCard>
 
-              <GroupCard>
-                <span>⚖️</span>
-                <div>
-                  <strong>Direito</strong>
-                  <p>12 membros</p>
-                </div>
-              </GroupCard>
-            </GroupList>
-          </Box>
-        </Content>
-      </div>
-    </Container>
+    <GroupCard>
+      <GroupIcon>
+        <FaBalanceScale />
+      </GroupIcon>
+      <GroupInfo>
+        <GroupName>Direito</GroupName>
+        <GroupMembers>12 membros</GroupMembers>
+      </GroupInfo>
+    </GroupCard>
+  </GroupGrid>
+</GroupsWrapper>
+      </Container>
+    </div>
   );
-}
+};
 
 export default Home;

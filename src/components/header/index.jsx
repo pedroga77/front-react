@@ -1,26 +1,47 @@
+
 import React from "react";
-import { SidebarHeader, ProfileAvatar, NavCard, NavBtn } from "./style";
+import {
+  SidebarContainer,
+  UserAvatar,
+  Menu,
+  MenuItem,
+} from "./style.js"
 
-function Sidebar() {
+import { FaPlus, FaUsers, FaComments, FaBook } from "react-icons/fa";
+
+const Sidebar = () => {
   return (
-    <SidebarHeader>
-      {/* Avatar do usuário */}
-      <ProfileAvatar>
+    <SidebarContainer>
+      <UserAvatar>
         <img
-          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          src="https://via.placeholder.com/80"
           alt="Avatar"
+          width="80"
+          height="80"
         />
-      </ProfileAvatar>
+      </UserAvatar>
 
-      {/* Card com todos os botões */}
-      <NavCard>
-        <NavBtn>➕ Criar Grupo</NavBtn>
-        <NavBtn>👥 Meus Grupos</NavBtn>
-        <NavBtn>💬 Chats</NavBtn>
-        <NavBtn>📖 E-Books</NavBtn>
-      </NavCard>
-    </SidebarHeader>
+      <Menu>
+        <MenuItem>
+          <FaPlus />
+          Criar Grupo
+        </MenuItem>
+        <MenuItem>
+          <FaUsers />
+          Meus Grupos
+        </MenuItem>
+        <MenuItem>
+          <FaComments />
+          Chats
+        </MenuItem>
+        <MenuItem>
+          <FaBook />
+          E-Books
+        </MenuItem>
+      </Menu>
+    </SidebarContainer>
   );
-}
+};
 
 export default Sidebar;
+

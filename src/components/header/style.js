@@ -1,8 +1,9 @@
+
 import styled from "styled-components";
 
-export const SidebarHeader = styled.aside`
+export const SidebarContainer = styled.aside`
   width: 220px;
-  background-color: #3b2da0;
+  background-color: #2c1e92;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -14,7 +15,7 @@ export const SidebarHeader = styled.aside`
   box-sizing: border-box;
 `;
 
-export const ProfileAvatar = styled.div`
+export const UserAvatar = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -31,9 +32,8 @@ export const ProfileAvatar = styled.div`
   }
 `;
 
-/* O "card interno" — roxo, com padding, gap e sombra */
-export const NavCard = styled.div`
-  background: linear-gradient(180deg, #4b39b8 0%, #3d2f9a 100%);
+export const Menu = styled.div`
+  background: linear-gradient(180deg, #3b2cb0 0%, #2c1e92 100%);
   width: 100%;
   border-radius: 12px;
   padding: 14px;
@@ -45,8 +45,7 @@ export const NavCard = styled.div`
   gap: 10px;
 `;
 
-/* Botões dentro do card — ocupam a largura, padding confortável */
-export const NavBtn = styled.button`
+export const MenuItem = styled.button`
   background: transparent;
   border: none;
   color: white;
@@ -61,6 +60,10 @@ export const NavBtn = styled.button`
   gap: 10px;
   transition: background 0.18s ease, transform 0.12s ease;
 
+  svg {
+    font-size: 18px;
+  }
+
   &:hover {
     background: rgba(255, 255, 255, 0.06);
     transform: translateY(-1px);
@@ -70,3 +73,4 @@ export const NavBtn = styled.button`
     transform: translateY(0);
   }
 `;
+
