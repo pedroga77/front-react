@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Sidebar from "../../components/header/index.jsx";
 import {
   Container,
@@ -28,8 +29,12 @@ const Home = () => {
           <Title>Bem-vindo ao Journey!</Title>
         </Header>
 
-       <GroupsWrapper>
-  <GroupsTitle>Grupos</GroupsTitle>
+        <GroupsWrapper>
+  <GroupsTitle>
+    <Link to="/calendary" style={{ textDecoration: "none", color: "white" }}>
+      Meus Grupos
+    </Link>
+  </GroupsTitle>
 
   {/* Actions fora dos cards, no topo direito */}
   <Actions>
