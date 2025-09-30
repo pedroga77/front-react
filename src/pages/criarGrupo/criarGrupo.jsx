@@ -26,12 +26,20 @@ const CriarGrupo = () => {
   useEffect(() => {
     fetch("http://localhost:8080/v1/journey/area")
       .then(res => res.json())
-      .then(data => setAreas(Array.isArray(data) ? data : []))
+      .then(data => {
+        const areasArray = Array.isArray(data.Area) ? data.Area : [];
+        const formattedAreas = areasArray.map(a => ({
+          id: a.id_area,
+          nome: a.area
+        }));
+        setAreas(formattedAreas);
+      })
       .catch(err => {
         console.error("Erro ao buscar áreas:", err);
         setAreas([]);
       });
   }, []);
+  
 
   const handleSubmit = async () => {
     if (!nome || !limite_membros || !descricao || !id_area) {
@@ -92,8 +100,8 @@ const CriarGrupo = () => {
             >
               <option value="">Selecione uma área</option>
               {areas.map(area => (
-                <option key={area.id} value={area.id}>{area.nome}</option>
-              ))}
+  <option key={area.id} value={area.id}>{area.nome}</option>
+))}
             </select>
 
             <Label>Limite de Membros (máx: 30)</Label>
